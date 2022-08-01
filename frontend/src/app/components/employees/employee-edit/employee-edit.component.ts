@@ -17,6 +17,7 @@ export class EmployeeEditComponent implements OnInit {
   url = 'http://localhost:3030/v1/api/accounts';
   id: string;
   submitted: boolean = false;
+  male = ['Gender']
 
   constructor(
     private rest: RestApiService,
