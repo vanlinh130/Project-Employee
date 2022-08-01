@@ -1,0 +1,33 @@
+.container {
+  margin-top: 10px;
+  padding: 0 50px;
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    button {
+      height: 40px;
+    }
+
+    .manage-employees {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .icon-btn {
+      button {
+        height: 40px;
+        width: 40px;
+        margin-right: 8px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width:  46.1875em) {
+  .manage-employees p {
+    display: none;
+  }
+}
