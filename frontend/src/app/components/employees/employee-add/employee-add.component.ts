@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Employee } from 'src/app/models/employee';
@@ -20,6 +20,9 @@ export class EmployeeAddComponent implements OnInit {
 
   @ViewChild('loginForm')
   male = ['Gender']
+  employeeForm : FormGroup;
+
+  emailPattern  = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(
     private rest: RestApiService,
@@ -27,6 +30,17 @@ export class EmployeeAddComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
   ) {
+    this.employeeForm = new FormGroup({
+      name : new FormControl('', [Validators.required, Validators.minLength(6)]),
+      phone : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
+      date : new FormControl(null, Validators.required),
+      description : new FormControl('', [Validators.required]),
+      email : new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
+      password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+      'status' : new FormControl(null, Validators.required),
+      'role' : new FormControl(null, Validators.required),
+      'gender' : new FormControl(null, Validators.required),
+    })
     this.employee = new Employee();
   }
 
@@ -39,12 +53,12 @@ export class EmployeeAddComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.addForm.valid) {
+    if (!this.employeeForm.valid) {
       console.log('Invalid data');
       return;
     }
     this.save();
-    console.log(this.addForm.value);
+    console.log(this.employeeForm.value);
   }
 
   save() {

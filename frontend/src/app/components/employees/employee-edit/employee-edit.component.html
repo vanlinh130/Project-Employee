@@ -9,14 +9,14 @@
       <div class="grid formgrid p-fluid">
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="name">Name</label>
+          <label for="name">Name *</label>
           <input #name="ngModel" id="name" type="text" name="name" placeholder="Full name" required
             pInputText [(ngModel)]="employee.name" [ngClass]="{'ng-dirty': (name.invalid && submitted) || (name.dirty && name.invalid)}" style="height: 40px;">
           <small *ngIf="(name.invalid && submitted) || (name.dirty && name.invalid)" class="p-error">Name is required.</small>
         </div>
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="email">Email</label>
+          <label for="email">Email *</label>
           <input #email="ngModel" id="email" type="email" name="email"
             placeholder="abc@gmail.com" required pInputText [(ngModel)]="employee.email" email="@gmail.com"
             [ngClass]="{'ng-dirty': (email.invalid && submitted) || (email.dirty && email.invalid)}" style="height: 40px;">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="phone">Phone</label>
+          <label for="phone">Phone *</label>
           <input #phone="ngModel" id="phone" type="text" name="phone"
             placeholder="Phone" required pInputText minlength="10" maxlength="10"
             [(ngModel)]="employee.phone"
@@ -39,7 +39,7 @@
         </div>
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="password">Password</label>
+          <label for="password">Password *</label>
           <input #password="ngModel" id="password" type="password" name="password"
             placeholder="password" required pInputText minlength="6" [(ngModel)]="employee.password"
             [ngClass]="{'ng-dirty': (password.invalid && submitted) || (password.dirty && password.invalid)}" style="height: 40px;">
@@ -50,7 +50,7 @@
         </div>
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="enrollDate">Date</label>
+          <label for="enrollDate">Date *</label>
           <p-calendar #enrollDate="ngModel" id="enrollDate" type="text" name="enrollDate"
             placeholder="99/99/9999" [required]="true" [showIcon]="true" [(ngModel)]="employee.enrollDate"
             [ngClass]="{'ng-dirty': (enrollDate.invalid && submitted) || (enrollDate.dirty && enrollDate.invalid)}"
@@ -61,7 +61,7 @@
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6 lg:flex ">
           <div class="field mb-3 col-12 md:col-12 lg:col-6">
-            <label for="status">Status</label>
+            <label for="status">Status *</label>
             <br>
             <select #status="ngModel" id="status" type="text" name="status" class="form-control" required
               [(ngModel)]="employee.status"
@@ -77,7 +77,7 @@
           </div>
 
           <div class="field mb-3 col-12 md:col-12 lg:col-6">
-            <label for="role">Role</label>
+            <label for="role">Role *</label>
             <br>
             <select #role="ngModel" id="role" type="text" name="role" class="form-control" required
               [(ngModel)]="employee.role"
@@ -93,7 +93,7 @@
 
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="gender">Gender</label>
+          <label for="gender">Gender *</label>
           <input #gender="ngModel" id="gender" type="text" name="gender"
             [placeholder]="male" required pInputText [(ngModel)]="employee.gender" placeholder=""
             [ngClass]="{'ng-dirty': (gender.invalid && submitted) || (gender.dirty && gender.invalid)}" style="height: 40px;">
@@ -112,11 +112,6 @@
               <p-radioButton name="gender" value="Female" [(ngModel)]="employee.gender" inputId="gender2">
               </p-radioButton>
               <label for="gender2" [style]="{'margin': '0 8px'}">Female</label>
-            </div>
-            <div class="field-radiobutton col-12 md:col-6 lg:col-4">
-              <p-radioButton name="gender" value="Other" [(ngModel)]="employee.gender" inputId="gender3">
-              </p-radioButton>
-              <label for="gender3" [style]="{'margin': '0 8px'}">Other</label>
             </div>
           </div>
         </div>
