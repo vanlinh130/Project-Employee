@@ -70,7 +70,7 @@ import { RestApiService } from './services/rest-api.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     AppRoutingModule,
     CardModule,
     CalendarModule,

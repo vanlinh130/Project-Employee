@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Employee } from 'src/app/models/employee';
@@ -18,6 +19,9 @@ export class EmployeeEditComponent implements OnInit {
   id: string;
   submitted: boolean = false;
   male = ['Gender']
+  employeeForm : FormGroup;
+
+  emailPattern  = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(
     private rest: RestApiService,
@@ -25,7 +29,19 @@ export class EmployeeEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService) {
-    this.id = route.snapshot.params['id'];
+
+      this.employeeForm = new FormGroup({
+        name : new FormControl('', [Validators.required, Validators.minLength(6)]),
+        phone : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
+        date : new FormControl(null, Validators.required),
+        description : new FormControl('', [Validators.required, Validators.maxLength(100)]),
+        email : new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
+        password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+        status : new FormControl('', Validators.required),
+        role : new FormControl('', Validators.required),
+        gender : new FormControl('', Validators.required),
+      })
+      this.id = route.snapshot.params['id'];
   }
 
   // Khởi tạo thuộc tính employee lấy về từ phía server

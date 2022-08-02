@@ -18,7 +18,7 @@ export class EmployeeAddComponent implements OnInit {
   submitted: boolean = false;
   url = 'http://localhost:3030/v1/api/accounts';
 
-  @ViewChild('loginForm')
+  // @ViewChild('loginForm')
   male = ['Gender']
   employeeForm : FormGroup;
 
@@ -34,12 +34,12 @@ export class EmployeeAddComponent implements OnInit {
       name : new FormControl('', [Validators.required, Validators.minLength(6)]),
       phone : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
       date : new FormControl(null, Validators.required),
-      description : new FormControl('', [Validators.required]),
+      description : new FormControl('', [Validators.required, Validators.maxLength(100)]),
       email : new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
       password : new FormControl('', [Validators.required, Validators.minLength(6)]),
-      'status' : new FormControl(null, Validators.required),
-      'role' : new FormControl(null, Validators.required),
-      'gender' : new FormControl(null, Validators.required),
+      status : new FormControl('', Validators.required),
+      role : new FormControl('', Validators.required),
+      gender : new FormControl('', Validators.required),
     })
     this.employee = new Employee();
   }
