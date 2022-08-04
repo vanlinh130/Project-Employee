@@ -12,6 +12,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      .icon-manage {
+        display: flex;
+        h4 {
+          margin-left: 12px;
+        }
+      }
+
     }
 
     .icon-btn {
@@ -24,6 +31,7 @@
     }
   }
 }
+
 
 /* Mobile */
 @media (max-width:  46.1875em) {

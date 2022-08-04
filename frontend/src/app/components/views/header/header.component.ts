@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+import { Employee } from 'src/app/models/employee';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HeaderComponent implements OnInit {
 
+  employees!: Employee[];
   visibleSidebar: any;
   avatarSidebar : any;
   ellipsisSidebar : any;

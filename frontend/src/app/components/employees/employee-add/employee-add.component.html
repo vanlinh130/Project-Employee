@@ -18,7 +18,7 @@
           <small id="nameHid" *ngIf="(employeeForm.get('name')?.invalid && submitted) ||
             (employeeForm.get('name')?.dirty && employeeForm.get('name')?.invalid)" class="p-error">
             <p *ngIf="employeeForm.get('name')?.errors?.['required']">Name is required</p>
-            <p *ngIf="employeeForm.get('name')?.errors?.['minlength']">Name is required > 6</p>
+            <p *ngIf="employeeForm.get('name')?.errors?.['minlength']">Must write their full name</p>
           </small>
         </div>
 
@@ -47,7 +47,9 @@
           <small id="phoneHid" *ngIf="(employeeForm.get('phone')?.invalid && submitted) ||
             (employeeForm.get('phone')?.dirty && employeeForm.get('phone')?.invalid)" class="p-error">
             <p *ngIf="employeeForm.get('phone')?.errors?.['required']">Phone is required</p>
-            <p *ngIf="employeeForm.get('phone')?.errors?.['maxlength']">Phone is required < 10</p>
+            <p *ngIf="employeeForm.get('phone')?.errors?.['maxlength']">
+              Phone no more than 10 numbers
+            </p>
           </small>
         </div>
 
@@ -61,20 +63,20 @@
           <small id="passwordHid" *ngIf="(employeeForm.get('password')?.invalid && submitted) ||
             (employeeForm.get('password')?.dirty && employeeForm.get('password')?.invalid)" class="p-error">
             <p *ngIf="employeeForm.get('password')?.errors?.['required']">Password is required</p>
-            <p *ngIf="employeeForm.get('password')?.errors?.['minlength']">Password 6 characters is required</p>
+            <p *ngIf="employeeForm.get('password')?.errors?.['minlength']">Password > 6 characters</p>
           </small>
         </div>
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
-          <label for="enrollDate">date *</label>
-          <p-calendar formControlName="date" id="enrollDate" type="text" name="enrollDate"
+          <label for="enrollDate">enrollDate *</label>
+          <p-calendar formControlName="enrollDate" id="enrollDate" type="text" name="enrollDate"
             placeholder="99/99/9999" [showIcon]="true" [(ngModel)]="employee.enrollDate" [style]="{'height': '40px'}"
-            [ngClass]="{'ng-dirty': (employeeForm.get('date')?.invalid && submitted) ||
-            (employeeForm.get('date')?.dirty && employeeForm.get('date')?.invalid)}"></p-calendar>
+            [ngClass]="{'ng-dirty': (employeeForm.get('enrollDate')?.invalid && submitted) ||
+            (employeeForm.get('enrollDate')?.dirty && employeeForm.get('enrollDate')?.invalid)}"></p-calendar>
 
-          <small id="dateHid" *ngIf="(employeeForm.get('date')?.invalid && submitted) ||
-            (employeeForm.get('date')?.dirty && employeeForm.get('date')?.invalid)" class="p-error">
-            <p *ngIf="employeeForm.get('date')?.errors?.['required']">Date is required</p>
+          <small id="enrollDateHid" *ngIf="(employeeForm.get('enrollDate')?.invalid && submitted) ||
+            (employeeForm.get('enrollDate')?.dirty && employeeForm.get('enrollDate')?.invalid)" class="p-error">
+            <p *ngIf="employeeForm.get('enrollDate')?.errors?.['required']">Date is required</p>
           </small>
         </div>
 
@@ -117,7 +119,7 @@
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
           <label for="gender">Gender *</label>
           <input id="gender" type="text" name="gender"
-            [placeholder]="male"  pInputText [(ngModel)]="employee.gender"
+            pInputText [(ngModel)]="employee.gender"
             formControlName="gender" placeholder=""  style="height: 40px;"
             [ngClass]="{'ng-dirty': (employeeForm.get('gender')?.invalid && submitted) ||
             (employeeForm.get('gender')?.dirty && employeeForm.get('gender')?.invalid)}">
@@ -154,7 +156,7 @@
           <small id="descriptionHid" *ngIf="(employeeForm.get('description')?.invalid && submitted) ||
             (employeeForm.get('description')?.dirty && employeeForm.get('description')?.invalid)" class="p-error">
             <p *ngIf="employeeForm.get('description')?.errors?.['required']">Description is required</p>
-            <p *ngIf="employeeForm.get('description')?.errors?.['maxlength']">Description is required < 100</p>
+            <p *ngIf="employeeForm.get('description')?.errors?.['maxlength']">Description < 100 characters</p>
           </small>
         </div>
       </div>

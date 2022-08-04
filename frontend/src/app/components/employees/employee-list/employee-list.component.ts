@@ -16,6 +16,8 @@ export class EmployeeListComponent implements OnInit {
   selectedEmployees!: Employee[];
   url = 'http://localhost:3030/v1/api/accounts';
 
+  icon = 'pi pi-trash'
+
   constructor(private rest: RestApiService,
     private data: DataService,
     private messageService: MessageService,

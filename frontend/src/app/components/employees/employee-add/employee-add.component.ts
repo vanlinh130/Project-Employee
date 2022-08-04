@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Employee } from 'src/app/models/employee';
@@ -20,32 +20,33 @@ export class EmployeeAddComponent implements OnInit {
 
   // @ViewChild('loginForm')
   male = ['Gender']
-  employeeForm : FormGroup;
 
-  emailPattern  = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(
     private rest: RestApiService,
     private data: DataService,
     private router: Router,
     private messageService: MessageService,
-  ) {
-    this.employeeForm = new FormGroup({
-      name : new FormControl('', [Validators.required, Validators.minLength(6)]),
-      phone : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
-      date : new FormControl(null, Validators.required),
-      description : new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      email : new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
-      password : new FormControl('', [Validators.required, Validators.minLength(6)]),
-      status : new FormControl('', Validators.required),
-      role : new FormControl('', Validators.required),
-      gender : new FormControl('', Validators.required),
-    })
+    private fb: FormBuilder,) {
     this.employee = new Employee();
   }
 
+  employeeForm: FormGroup = this.fb.group({
+    name: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    phone: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
+    enrollDate: new FormControl('', Validators.required),
+    description: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    status: new FormControl('', Validators.required),
+    role: new FormControl('', Validators.required),
+    gender: new FormControl('', Validators.required),
+  })
+
   ngOnInit() {
     this.employee.gender = 'Male';
+    this.employee.enrollDate = new Date();
   }
 
   validate() {
@@ -77,10 +78,10 @@ export class EmployeeAddComponent implements OnInit {
 
   nextPage() {
     if (this.employee.name && this.employee.phone &&
-        this.employee.enrollDate && this.employee.work &&
-        this.employee.email && this.employee.password &&
-        this.employee.gender && this.employee.status &&
-        this.employee.role) {
+      this.employee.enrollDate && this.employee.work &&
+      this.employee.email && this.employee.password &&
+      this.employee.gender && this.employee.status &&
+      this.employee.role) {
       return;
     }
     this.submitted = true;
@@ -96,7 +97,7 @@ export class EmployeeAddComponent implements OnInit {
 
   showError() {
     this.messageService.add({
-      severity:'error',
+      severity: 'error',
       summary: 'Add',
       detail: 'Add employee failed !!'
     });

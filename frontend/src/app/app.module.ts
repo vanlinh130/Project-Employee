@@ -33,6 +33,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { EmployeeAddComponent } from './components/employees/employee-add/employee-add.component';
 import { EmployeeListComponent } from './components/employees/employee-list/employee-list.component';
+import { EmployeeDeleteComponent } from './components/employees/employee-delete/employee-delete.component';
 import { EmployeeEditComponent } from './components/employees/employee-edit/employee-edit.component';
 import { EmployeeDetailComponent } from './components/employees/employee-detail/employee-detail.component';
 import { HeaderComponent } from './components/views/header/header.component';
@@ -57,6 +58,7 @@ import { RestApiService } from './services/rest-api.service';
     EmployeeListComponent,
     EmployeeEditComponent,
     EmployeeDetailComponent,
+    EmployeeDeleteComponent,
     HeaderComponent,
     NavigationComponent,
     SectionComponent,

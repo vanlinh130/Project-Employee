@@ -6,7 +6,7 @@
       <div class="card-header mb-3">
         <h2 class="text-center">Edit New Employee</h2>
       </div>
-      <div class="grid formgrid p-fluid">
+      <div class="grid formgrid p-fluid" *ngIf="employee">
 
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
           <label for="name">Name *</label>
@@ -117,7 +117,7 @@
         <div class="field mb-3 col-12 md:col-12 lg:col-6">
           <label for="gender">Gender *</label>
           <input id="gender" type="text" name="gender"
-            [placeholder]="male"  pInputText [(ngModel)]="employee.gender"
+            pInputText [(ngModel)]="employee.gender"
             formControlName="gender" placeholder=""  style="height: 40px;"
             [ngClass]="{'ng-dirty': (employeeForm.get('gender')?.invalid && submitted) ||
             (employeeForm.get('gender')?.dirty && employeeForm.get('gender')?.invalid)}">

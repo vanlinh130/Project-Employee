@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
 import { DataService } from 'src/app/services/data.service';
 import { RestApiService } from 'src/app/services/rest-api.service';
@@ -21,10 +20,7 @@ export class EmployeeDetailComponent implements OnInit {
   constructor(
     private rest: RestApiService,
     private data: DataService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private messageService: MessageService,
-    private confirmationService: ConfirmationService) {
+    private route: ActivatedRoute,) {
       this.id = route.snapshot.params['id'];
     }
 
@@ -34,27 +30,4 @@ export class EmployeeDetailComponent implements OnInit {
       this.employee = (data as {employee : Employee}).employee;
     })
   }
-
-  delete(id: string) {
-    this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected employees?',
-      header: 'Confirm',
-      icon: 'pi pi-trash',
-      accept: () => {
-        this.rest.delete(this.url, id).then(data => {
-          this.showSuccess()
-          this.ngOnInit();
-          this.router.navigate(['./employee-list'])
-        })
-      }
-    });
-  }
-
-  showSuccess() {
-    this.messageService.add({
-      severity:'success',
-      summary: 'Success',
-      detail: 'Delete employee successfully'});
-  }
-
 }

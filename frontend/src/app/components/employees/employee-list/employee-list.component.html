@@ -45,7 +45,10 @@
               [rowHover]="true" [showCurrentPageReport]="true">
               <ng-template pTemplate="caption">
                 <div class="manage-employees">
-                  <p>Manage Employees</p>
+                  <div class="icon-manage">
+                    <i class="pi pi-id-card"></i>
+                    <h4 >Manage Employees</h4>
+                  </div>
                   <span class="p-input-icon-left">
                     <p-columnFilter field="name" placeholder="Search..."></p-columnFilter>
                   </span>
@@ -61,7 +64,7 @@
                   <th pSortableColumn="enrollDate">EnrollDate <p-sortIcon field="enrollDate"></p-sortIcon></th>
                   <th pSortableColumn="status">status <p-sortIcon field="status"></p-sortIcon></th>
                   <th pSortableColumn="phone">Phone <p-sortIcon field="phone"></p-sortIcon></th>
-                  <th></th>
+                  <th>Actions</th>
                   <th></th>
                 </tr>
               </ng-template>
@@ -81,8 +84,7 @@
                     <button [routerLink]="['/employee-edit/' + product._id]" pButton pRipple icon="pi pi-pencil"
                       class="p-button-warning "></button>
                     <div class="btn-group">
-                      <button pButton pRipple icon="pi pi-trash" class="p-button-danger"
-                        (click)="delete(product._id)"></button>
+                      <app-employee-delete [id]="icon" (deleteRequest)="delete(product._id)"></app-employee-delete>
                     </div>
                   </td>
                   <td></td>
